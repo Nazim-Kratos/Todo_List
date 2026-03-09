@@ -19,11 +19,12 @@ function App() {
    
   }
   const HandleDelete = (id) => {
+    let confirmDelete = confirm("Do you really want to delete this todo?");
+    if (!confirmDelete) return;
     const todos=Todos.filter((Todo=> 
       {
         return Todo.id!==id
       }))
-      
     setTodos(todos)
   }
   const HandleAdd = () => {
@@ -65,7 +66,7 @@ function App() {
     if (e.key === "Enter") {
       HandleAdd(); 
     }
-  };
+  }
   return (
     <>
       <Navbar />
