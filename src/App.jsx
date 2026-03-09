@@ -61,6 +61,11 @@ function App() {
   const toggleFinished=(e)=>{
     setshowfinished(!showfinished)
   }
+  const HandleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      HandleAdd(); 
+    }
+  };
   return (
     <>
       <Navbar />
@@ -71,8 +76,8 @@ function App() {
             iTask-Manage Your All Todos At One Place
           </h1>
           <div className="taksbar flex justify-center gap-3 my-6">
-            <input onChange={HandleChange} value={Todo} type="text" required placeholder='Add a Todo' className='outline rounded-2xl w-full sm:w-87.5 bg-white text-black pl-4 py-1' />
-            <button onClick={HandleAdd} disabled={Todo.trim() === ""} className='bg-green-500 hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed active:scale-95 transition-all text-white rounded-md px-4 py-1'>Save</button>
+            <input onChange={HandleChange} onKeyDown={HandleKeyPress} value={Todo} type="text" required placeholder='Add a Todo' className='outline rounded-2xl w-full sm:w-87.5 bg-white text-black pl-4 py-1' />
+            <button onClick={HandleAdd}  disabled={Todo.trim() === ""} className='bg-green-500 hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed active:scale-95 transition-all text-white rounded-md px-4 py-1'>Save</button>
           </div>
         </div>
         <div className="Todos ">
